@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<style>
+	.bar {
+		fill: steelblue;
+	}
+
+	.bar:hover {
+		fill: brown;
+	}
+
+	.axis {
+		font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	</style>
+</head>
+<body>
+<div>
+<svg id="svg1" style="position:absolute;left:10px;top:10px"></svg>
+<svg id="svg2" style="position:absolute;left:270px;top:10px"></svg>
+<svg id="svg3" style="position:absolute;left:10px;top:270px"></svg>
+</div><br>
+<div style="position:absolute;left:10px;top:560px">
+Diversity: <span id="diversity"></span>
+</div>
+
+<script src="sandpile.js"></script>
+</body>
+</html>
