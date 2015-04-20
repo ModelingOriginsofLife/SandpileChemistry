@@ -1,6 +1,8 @@
-var D=2; // There is always an extra 'height' dimension here
-var m=2; // Minimum height difference for avalanche
-var N=4; // Usual molecule linear dimension
+var D=2; // There is always an extra 'height' dimension here (org val = 2)
+var m=2; // Minimum height difference for avalanche (org val = 2)
+var N=6; // Usual molecule linear dimension (org val = 4)
+var Nmol=1000; // Number of molecules (org val = 1000)
+var Drive=20; // drive determining influence of boundaries (multiplier of len0=Bath.length, org val=0.25)
 
 var moleculeHash = [];
 var transferMatrix = [];
@@ -279,10 +281,12 @@ function initBoundaries()
 	boundaryMolecules.push(new Molecule(molSize));
 	
 	for (var i=0;i<boundaryMolecules[0].totalSize;i++)
-		boundaryMolecules[0].sandArray[i] = Math.floor(3*Math.random()); 
+//		boundaryMolecules[0].sandArray[i] = Math.floor(3*Math.random()); 
+		boundaryMolecules[0].sandArray[i] = 0;
 
 	for (var i=0;i<boundaryMolecules[1].totalSize;i++)
-		boundaryMolecules[1].sandArray[i] = 8+Math.floor(3*Math.random()); // This one starts a bit higher up
+//		boundaryMolecules[1].sandArray[i] = 8+Math.floor(3*Math.random()); // This one starts a bit higher up
+		boundaryMolecules[1].sandArray[i] = 11;
 }	
 
 function iterateBath()
@@ -354,7 +358,7 @@ function iterateBath()
 	}
 	
 	// Also do it with boundary molecules
-	for (var i=0;i<len0/4;i++)
+	for (var i=0;i<Drive*len0;i++)
 	{
 		var joinedMolecule;
 		var m1 = Math.floor(Math.random()*Bath.length);
@@ -422,7 +426,7 @@ function initSandpile()
 		molSize[i] = N;
 	}
 	
-	for (var i=0;i<1000;i++)
+	for (var i=0;i<Nmol;i++)
 	{
 		var mol = new Molecule(molSize);
 		
